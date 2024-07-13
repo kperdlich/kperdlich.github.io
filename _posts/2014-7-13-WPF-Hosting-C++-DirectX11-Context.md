@@ -20,7 +20,7 @@ To create a DirectX context, we need a Win32 window.
 Let's delve into how to achieve that, focusing on the essential aspects while bypassing unnecessary specifics related to WPF, DirectX, Win32, MSBuild/CMake, etc. 
 For a deeper dive into these areas, refer to the relevant documentation.
 
-```cpp
+{% highlight cpp %}
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -52,37 +52,37 @@ void* Initialize(int width, int height)
     RegisterClassEx(&wc);
     
     m_WindowHandle = CreateWindowEx(
-                0,                              
-                wc.lpszClassName,	
-                L"D3DRenderWindow", 
-                WS_OVERLAPPEDWINDOW,           
+                0,
+                wc.lpszClassName,
+                L"D3DRenderWindow",
+                WS_OVERLAPPEDWINDOW,
                 CW_USEDEFAULT,
-                CW_USEDEFAULT, 
-                width, 
+                CW_USEDEFAULT,
+                width,
                 height,
-                NULL,       
-                NULL,       
-                NULL,  
-                NULL        
+                NULL,
+                NULL,
+                NULL,
+                NULL
             );
-            
+     
     ShowWindow(m_WindowHandle, SW_SHOWDEFAULT);
-    UpdateWindow(m_WindowHandle);	
+    UpdateWindow(m_WindowHandle);
     
-    InitializeD3D11();  
+    InitializeD3D11();
     
     return m_WindowHandle;
 }
 
-InitializeD3D11()
+void InitializeD3D11()
 {
-    ... 
+    ...
     DXGI_SWAP_CHAIN_DESC swapChainDesc;
-	ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
-	swapChainDesc.OutputWindow = m_WindowHandle;
-	...
+    ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
+    swapChainDesc.OutputWindow = m_WindowHandle;
+    ...
 }
-```
+{% endhighlight %}
 
 ###  Parent Handle and WS_CHILD
 .NET provides a convenient way to host a Win32 window as an element within a WPF application via `System.Windows.Interop.HwndHost`. 
@@ -91,31 +91,33 @@ We only need to provide the handle of the parent WPF application when creating t
 
 Let's update our Win32 application to accept a parent handle and pass it along. Additionally, we need to use the `WS_CHILD` style instead of `WS_OVERLAPPEDWINDOW`:
 
-```cpp
+{% highlight cpp %}
 void* Initialize(int width, int height, void* parent)
 {
     ...
     m_WindowHandle = CreateWindowEx(
-			0,						  
-			wc.lpszClassName,		  
-			 L"D3DRenderWindow",	  
-			WS_CHILD,			  
+			0,
+			wc.lpszClassName,
+			L"D3DRenderWindow",
+			WS_CHILD,
 			CW_USEDEFAULT,
-			CW_USEDEFAULT, 				  
-			width, 
-			height,	  
+			CW_USEDEFAULT,
+			width,
+			height,
 			static_cast<HWND>(parent),
-			NULL,					  
-			NULL,					  
-			NULL					  
+			NULL,
+			NULL,
+			NULL
 		);
     ...
 }
-```
+{% endhighlight %}
 
 ### The C API and the C# consumer
+
 Next, we need to create a C API for the Win32 application and the C# consumer, utilizing P/Invoke:
-```cpp
+
+{% highlight cpp %}
 #pragma once
 
 #ifdef _WIN32
@@ -132,10 +134,9 @@ C_API void* InitializeRenderContext(int width, int height, void* windowHandle)
 {
     return Initialize(width, height, windowHandle);
 }
+{% endhighlight %}
 
-```
-
-```c#
+{% highlight c# %}
 using System.Runtime.InteropServices;
 
 namespace EngineSharp 
@@ -148,10 +149,13 @@ namespace EngineSharp
         public static extern IntPtr InitializeRenderContext(int width, int height, IntPtr windowHandle);
     }
 }
-```
+{% endhighlight %}
+
 ### The WPF component
+
 Finally, let's create a WPF component that encapsulates the Win32 handle and puts everything together:
-```c#
+
+{% highlight c# %}
 using EngineSharp;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
@@ -185,7 +189,7 @@ namespace Editor.Controls
         }
     }
 }
-```
+{% endhighlight %}
 
 ### Conclusion
 
