@@ -9,9 +9,9 @@ title: Bringing Minecraft to the Nintendo Wii - A Developer's Journey
 Back in 2015, a friend of mine mentioned that there had been a few attempts in the homebrew community to run Minecraft on the Nintendo Wii, known as Wiicraft.
 Unfortunately, these attempts hadn't succeeded due to the console's limited hardware capabilities. 
 Despite not owning a Wii or playing Minecraft at the time, I found myself immediately drawn to the challenge.
-The idea of running a voxel-based world on such a limited platform was fascinating, to say the least, and sounded like a fun challenge.
+The idea of running a voxel-based world on such a limited platform was fascinating and sounded like a fun challenge.
 
-A year prior, I had delved into graphics programming with OpenGL (specifically the Fixed Function Pipeline) and C++. 
+A year earlier, I had started learning graphics programming with OpenGL and C++.
 This helped a lot since the graphics API on the Wii, known as GX, shares similarities with OpenGL.
 Given that the name Wiicraft was already taken, I called my project WoxelCraft.
 
@@ -19,7 +19,7 @@ Given that the name Wiicraft was already taken, I called my project WoxelCraft.
 
 Initially, I set aside the multiplayer/network aspect of the game and focused on implementing scenes, UI components, a player controller, and the chunk management + renderer for the world.
 At the time, I was working full-time as a game developer and found it very fulfilling to develop everything from scratch,
-without having to rely on existing frameworks or game engines like Flash or Unity (yes, Flash was still a thing back then) that we used at work.
+without having to rely on existing frameworks or game engines like Flash or Unity (yes, Flash was still a thing back then) which we used at work.
 
 Since I didn't have access to a Wii, I did most of my testing using the Dolphin emulator.
 This approach enabled rapid iterations and provided a convenient workflow.
@@ -35,7 +35,7 @@ However, debugging the netcode and packets proved to be challenging.
 The Minecraft protocol documentation and tools like Wireshark helped a lot, but to improve my development experience and gain a better understanding of the netcode, 
 I decided to implement a small Minecraft client using Unity. 
 
-For those interested, the code for Unity-based client can be found [here](https://github.com/kperdlich/Minecraft-Unity-Client). 
+For those interested, the code for the Unity-based client can be found [here](https://github.com/kperdlich/Minecraft-Unity-Client). 
 
 Eventually, I got myself a Wii console. With access to real hardware, I was able to transition from testing on the emulator to testing on the Wii itself. 
 This was crucial for validating functionality and performance on the actual device. 
@@ -48,7 +48,7 @@ This experience reflected a common belief among game developers: <i>If your game
 
 ### Wiicraft (2020)
 
-In late 2019, I decided to reboot the project with focus on multiplayer right from the get-go.
+In late 2019, I decided to reboot the project with focus on multiplayer right from the start.
 At the time, I had a few weeks off before starting a new job, so the timing was perfect.
 Serializing all the chunk data from the server onto the SD card and then loading and rendering the player-visible chunks in a timely manner was the most complex part of the game.
 After a few weeks of work I had a working prototype:
@@ -60,14 +60,14 @@ I made the repository public and added a config file (for server IP, username, e
 
 ### Cross-Platform Engine
 With the prototype, my plan was to extend it into a cross-platform engine to further optimize my workflow and enable the use of more development tools.
-This involved developing a renderer capable of supporting both GX and OpenGL 3.3.0, which was a lot of fun. 
+This involved building a renderer capable of supporting both GX and OpenGL 3.3.0.
 
 ![Cross-Platform-Engine-1](/images/Wiicraft_OpenGL_Engine-1.png)
 
 ![Cross-Platform-Engine-2](/images/Wiicraft_OpenGL_Engine-2.jpg)
 
 However, as time went on, my interest in the project slowly faded.
-The prototype showed that it was possible to run a Minecraft client on the Wii, and my initial enthusiasm for the project disappeared.
+The prototype showed that it was possible to run a Minecraft client on the Wii and my initial motivation for the project disappeared.
 
 Nevertheless, I still believe releasing the project to the public was the right decision, despite its imperfections. 
 Keeping it buried in a private repository wouldn't benefit anyone.
