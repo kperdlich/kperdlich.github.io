@@ -17,7 +17,7 @@ However, a significant downside of using P/Invoke is the necessity to provide a 
 ### The Win32 Window
 
 To create a DirectX context, we need a Win32 window. 
-Let's delve into how to achieve that, focusing on the essential aspects while bypassing unnecessary specifics related to WPF, DirectX, Win32, MSBuild/CMake, etc. 
+Let's see how to achieve that, focusing on the essential aspects while bypassing unnecessary specifics related to WPF, DirectX, Win32, MSBuild/CMake, etc. 
 For a deeper dive into these areas, refer to the relevant documentation.
 
 {% highlight cpp %}
@@ -194,5 +194,5 @@ namespace Editor.Controls
 ### Conclusion
 
 For larger projects, I wouldn't recommend using P/Invoke, as the required C API adds significant maintenance overhead unless it's already needed for another reason.
-A more sustainable approach for C++ is likely using C++/CLI with a generator (like [SWIG](https://github.com/swig/swig) or [SharpGenTools](https://github.com/SharpGenTools/SharpGenTools)), but that's a topic for another day. :)
+A more sustainable approach for C++ is likely using C++/CLI, potentially using a generator like [SWIG](https://swig.org/) or [SharpGenTools](https://github.com/SharpGenTools/SharpGenTools), but that's a topic for another day. :)
 
