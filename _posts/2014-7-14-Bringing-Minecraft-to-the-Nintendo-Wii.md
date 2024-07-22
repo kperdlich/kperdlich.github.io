@@ -35,6 +35,8 @@ However, debugging the netcode and packets proved to be challenging.
 The Minecraft protocol documentation and tools like Wireshark helped a lot, but to improve my development experience and gain a better understanding of the netcode, 
 I decided to implement a small Minecraft client using Unity. 
 
+![UnityClient](/images/MinecraftUnityClient.png)
+
 For those interested, the code for the Unity-based client can be found [here](https://github.com/kperdlich/Minecraft-Unity-Client). 
 
 Eventually, I got myself a Wii console. With access to real hardware, I was able to transition from testing on the emulator to testing on the Wii itself. 
