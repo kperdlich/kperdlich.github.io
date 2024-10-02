@@ -76,4 +76,5 @@ Keeping it buried in a private repository wouldn't benefit anyone.
 
 If you're interested in the project or Homebrew development in general, feel free to check out the following links:
 - [Wiicraft](https://github.com/kperdlich/wiicraft)
+- [Cross-Platform Engine](https://github.com/kperdlich/engine)
 - [devkitpro](https://devkitpro.org/)
